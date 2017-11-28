@@ -29,10 +29,18 @@
 
 @class ActionSheetDatePicker;
 
+@protocol ActionSheetDatePickerDelegate <NSObject>
+@optional
+- (void)datePickerValueChanged:(NSDate *)date;
+@end
+
 typedef void(^ActionDateDoneBlock)(ActionSheetDatePicker *picker, id selectedDate, id origin); //selectedDate is NSDate or NSNumber for "UIDatePickerModeCountDownTimer"
 typedef void(^ActionDateCancelBlock)(ActionSheetDatePicker *picker);
 
+
 @interface ActionSheetDatePicker : AbstractActionSheetPicker
+
+@property (nonatomic, weak) id<ActionSheetDatePickerDelegate> delegate;
 
 @property (nonatomic, retain) NSDate *minimumDate; // specify min/max date range. default is nil. When min > max, the values are ignored. Ignored in countdown timer mode
 @property (nonatomic, retain) NSDate *maximumDate; // default is nil
