@@ -40,7 +40,7 @@ typedef void(^ActionDateCancelBlock)(ActionSheetDatePicker *picker);
 
 @interface ActionSheetDatePicker : AbstractActionSheetPicker
 
-@property (nonatomic, weak) id<ActionSheetDatePickerDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<ActionSheetDatePickerDelegate> delegate;
 
 @property (nonatomic, retain) NSDate *minimumDate; // specify min/max date range. default is nil. When min > max, the values are ignored. Ignored in countdown timer mode
 @property (nonatomic, retain) NSDate *maximumDate; // default is nil
